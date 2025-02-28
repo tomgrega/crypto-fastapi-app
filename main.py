@@ -170,7 +170,7 @@ async def create_coins(coin: CoinBase, db: db_dependency):
 
 @app.delete("/coins/{coin_name}/{price_date}")
 async def delete_coin_price(coin_name: str, price_date: date, db: Session = Depends(get_db)):
-    # Find the coin by its name
+    #najdi coin podla mena
     coin = db.query(models.Coins).filter(models.Coins.coin_name == coin_name).first()
     if not coin:
         raise HTTPException(status_code=404, detail="Coin not found")
